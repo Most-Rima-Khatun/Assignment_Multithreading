@@ -1,4 +1,4 @@
-package Problem_03;
+package Problem_04;
 
 public class ConsumerThread extends Thread
 {

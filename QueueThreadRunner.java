@@ -1,4 +1,6 @@
-package Problem_03;
+package Problem_04;
+
+import java.util.Scanner;
 
 public class QueueThreadRunner
 {
@@ -8,11 +10,20 @@ public class QueueThreadRunner
     {
         Queue<String> q = new Queue<>();
 
-        ProducerThread producer = new ProducerThread(q, REPETITIONS);
-        ConsumerThread consumer = new ConsumerThread(q, REPETITIONS);
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter the number of Producer/Consumer Threads: ");
+        int threadCount = in.nextInt();
+        in.close();
 
-        producer.start();
-        consumer.start();
+        for(int i = 0; i < threadCount; i++)
+        {
+            ProducerThread producer = new ProducerThread(q, REPETITIONS);
+            ConsumerThread consumer = new ConsumerThread(q, REPETITIONS);
+
+            producer.start();
+            consumer.start();
+        }
     }
 
 }
+

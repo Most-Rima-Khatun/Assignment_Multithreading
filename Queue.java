@@ -1,8 +1,7 @@
-package Problem_03;
+package Problem_04;
 
 import java.time.LocalTime;
 import java.util.NoSuchElementException;
-
 
 public class Queue<E>
 {
@@ -17,6 +16,7 @@ public class Queue<E>
         this.last = null;
         this.currentSize = 0;
     }
+
     public int getCurrentSize()
     {
         return this.currentSize;
@@ -40,12 +40,14 @@ public class Queue<E>
         return this.last.data;
     }
 
+
     public synchronized void add(E element) throws InterruptedException
     {
         while(this.currentSize >= MAX_SIZE)
         {
             wait();
         }
+
         if(this.currentSize < 1)
         {
             Node<E> newNode = new Node<>();
@@ -69,6 +71,7 @@ public class Queue<E>
         notifyAll();
     }
 
+
     public synchronized E remove() throws InterruptedException
     {
         while(this.currentSize <= 0)
@@ -84,6 +87,7 @@ public class Queue<E>
         notifyAll();
         return firstInQueue;
     }
+
 
     public boolean isEmpty()
     {
@@ -108,8 +112,10 @@ public class Queue<E>
 
     class Node<T>
     {
+
         public T data;
         public Node<T> next;
+
+
     }
 }
-
