@@ -1,4 +1,4 @@
-package Problem_04;
+package Problem_05;
 
 import java.util.Scanner;
 
@@ -8,7 +8,7 @@ public class QueueThreadRunner
 
     public static void main(String[] args)
     {
-        Queue<String> q = new Queue<>();
+        Queue<String> q = new Queue<>(3);
 
         Scanner in = new Scanner(System.in);
         System.out.print("Enter the number of Producer/Consumer Threads: ");
@@ -23,6 +23,8 @@ public class QueueThreadRunner
             producer.start();
             consumer.start();
         }
+
+        System.out.println("Empty: " + q.isEmpty());
     }
 
 }

@@ -1,4 +1,4 @@
-package Problem_04;
+package Problem_05;
 
 public class ConsumerThread extends Thread
 {
@@ -18,7 +18,8 @@ public class ConsumerThread extends Thread
         {
             for(int i = 0; i < count; i++)
             {
-                q.remove();
+                String s = q.remove();
+                System.out.println("Consumer: " + s);
                 sleep(DELAY);
             }
         }

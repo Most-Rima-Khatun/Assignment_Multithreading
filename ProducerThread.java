@@ -1,4 +1,4 @@
-package Problem_04;
+package Problem_05;
 
 import java.time.LocalTime;
 
@@ -21,6 +21,7 @@ public class ProducerThread extends Thread
             for(int i = 0; i < count; i++)
             {
                 String time = LocalTime.now().toString();
+                System.out.println("Producer: " + time);
                 q.add(time);
                 sleep(DELAY);
             }
@@ -28,3 +29,4 @@ public class ProducerThread extends Thread
         catch(InterruptedException e) {}
     }
 }
+
