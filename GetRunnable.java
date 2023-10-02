@@ -2,19 +2,18 @@ package Problem_06;
 
 import java.util.Random;
 
-public class AddRunnable<E> implements Runnable
+public class GetRunnable<E> implements Runnable
 {
     private ArrayList<E> list;
     private int count;
-    private E element;
     private final int DELAY = 10;
+
     private Random gen;
 
-    public AddRunnable(ArrayList<E> list, int count, E element)
+    public GetRunnable(ArrayList<E> list, int count)
     {
         this.list = list;
         this.count = count;
-        this.element = element;
         this.gen = new Random();
     }
 
@@ -24,15 +23,15 @@ public class AddRunnable<E> implements Runnable
         {
             for(int i = 1; i <= count; i++)
             {
-                System.out.print("[Add...]");
+                System.out.print("[Get...]");
                 if(this.list.size() == 0)
                 {
-                    this.list.add(0, element);
+                    this.list.get(0);
                 }
                 else
                 {
                     int index = gen.nextInt(this.list.size());
-                    this.list.add(index, element);
+                    this.list.get(index);
                 }
                 System.out.println("[Size: " + this.list.size() + "]");
                 Thread.sleep(DELAY);

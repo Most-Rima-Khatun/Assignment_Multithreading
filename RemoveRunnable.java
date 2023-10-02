@@ -1,32 +1,42 @@
-package Problem1;
+package Problem_06;
 
-import java.util.List;
+import java.util.Random;
 
-public class RemoveRunnable<E> implements  Runnable {
+public class RemoveRunnable<E> implements Runnable
+{
+    private ArrayList<E> list;
+    private int count;
+    private final int DELAY = 10;
+    private Random gen;
 
-    List<E> list;
-
-    private static final int DELAY = 1;
-    private E element ;
-    private int count ;
-    public RemoveRunnable(List<E> list, E element, int count)
+    public RemoveRunnable(ArrayList<E> list, int count)
     {
         this.list = list;
-        this.element  = element;
-        this.count = count ;
+        this.count = count;
+        this.gen = new Random();
     }
+
     public void run()
     {
         try
         {
-            for(int i = 1; i <= count ; i++)
+            for(int i = 1; i <= count; i++)
             {
-                System.out.println("Size: " + list.size());
-                list.remove(element);
+                System.out.print("[Remove...]");
+                if(this.list.size() == 0)
+                {
+                    this.list.remove(0);
+                }
+                else
+                {
+                    int index = gen.nextInt(this.list.size());
+                    this.list.remove(index);
+                }
+                System.out.println("[Size: " + this.list.size() + "]");
                 Thread.sleep(DELAY);
             }
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
+        catch(InterruptedException e) { e.printStackTrace(); }
     }
 }
+

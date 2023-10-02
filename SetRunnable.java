@@ -2,7 +2,7 @@ package Problem_06;
 
 import java.util.Random;
 
-public class AddRunnable<E> implements Runnable
+public class SetRunnable<E> implements Runnable
 {
     private ArrayList<E> list;
     private int count;
@@ -10,7 +10,7 @@ public class AddRunnable<E> implements Runnable
     private final int DELAY = 10;
     private Random gen;
 
-    public AddRunnable(ArrayList<E> list, int count, E element)
+    public SetRunnable(ArrayList<E> list, int count, E element)
     {
         this.list = list;
         this.count = count;
@@ -24,15 +24,15 @@ public class AddRunnable<E> implements Runnable
         {
             for(int i = 1; i <= count; i++)
             {
-                System.out.print("[Add...]");
+                System.out.print("[Set...]");
                 if(this.list.size() == 0)
                 {
-                    this.list.add(0, element);
+                    this.list.set(0, element);
                 }
                 else
                 {
                     int index = gen.nextInt(this.list.size());
-                    this.list.add(index, element);
+                    this.list.set(index, element);
                 }
                 System.out.println("[Size: " + this.list.size() + "]");
                 Thread.sleep(DELAY);
